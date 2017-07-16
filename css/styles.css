@@ -1,0 +1,596 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
+html {
+  --text-color: #212529;
+  --black: #000;
+  --white: #fff;
+  --grey: #ddd;
+  --grey-light: #eee;
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+}
+
+.flex {
+  display:flex;
+  align-items: center;
+}
+
+.reset {
+  padding: 0;
+  margin: 0;
+}
+
+/*
+Buttons
+
+Buttons are available in a number of colors and sizes.
+
+Markup:
+<div class="button-grouped">
+  <button class="button">
+    Add to bag
+  </button>
+  <button class="button button--favorite">
+    &#9872;
+  </button>
+</div>
+
+Styleguide Buttons
+*/
+.button {
+  padding: 1em 0;
+  border: 1px solid var(--black);
+  background-color: var(--black);
+  font-size: 0.8rem;
+  color: var(--white);
+  text-align: center;
+  width: 500px;
+}
+
+.button-grouped > .button {
+  margin-right: -.2em;
+}
+
+/*
+Default
+
+Example grouping of default and favorite buttons for product page.
+
+Markup:
+<button class="button">
+  Add to bag
+</button>
+
+Styleguide Buttons.default
+*/
+
+/*
+Favorite
+
+Save an item for later.
+
+Markup:
+<button class="button button--favorite">
+  &#9872;
+</button>
+
+Styleguide Buttons.favorite
+*/
+
+.button--favorite {
+  width: 50px;
+}
+
+/*
+Dynamic
+
+Buttons with "state" such as available size and fabric. The out-of-stock class disables unavailable sizes.
+
+Markup:
+<p class="reset">Size</p>
+<div class="button__options">
+  <button class="button button--dynamic">0</button>
+  <button class="button button--dynamic">2</button>
+  <button class="button button--dynamic">4</button>
+  <button class="button button--dynamic button--out-of-stock">6</button>
+  <button class="button button--dynamic">8</button>
+  <button class="button button--dynamic">10</button>
+  <button class="button button--dynamic">12</button>
+</div>
+
+Styleguide Buttons.dynamic
+*/
+
+.button__options {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 300px;
+}
+
+.button--dynamic {
+  padding: 1em;
+  margin: .25em .25em .25em 0;
+  background-color: var(--white);
+  color: var(--black);
+  width: 16%;
+}
+
+.button--dynamic:hover {
+  background-color: var(--grey-light)
+}
+
+.button--out-of-stock {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='black' stroke-width='1'/><path d='M0 0 L100 100 ' stroke='black' stroke-width='1'/></svg>");
+    border-color: var(--grey);
+    color: var(--grey);
+}
+
+/*
+Mobile Button
+
+For mobile-sized devices, main buttons keep their size and fill the viewport.
+
+Markup:
+<div>
+  <button class="button button--mobile">
+    Add to bag
+  </button>
+</div>
+
+Styleguide Buttons.mobile
+*/
+.button--mobile {
+  padding: 1em 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+/*
+Mobile Dynamic
+
+Option element with state or combined choices such as size.
+
+Markup:
+<div class="option-container">
+  <select class="option-container">
+    <option value="0">0</option>
+    <option selected="selected" value="2">2</option>
+    <option value="4">4</option>
+    <option value="6">6</option>
+    </select>
+</div>
+
+Styleguide Buttons.options
+*/
+.option-container {
+  background: var(--grey-light);
+  height: 30px;
+  width: 50px;
+  border: none;
+}
+
+/*
+Dropdown
+
+Toggleable item descriptions for smaller viewports.
+
+A max-width of 375px is used and the first two list items contain example content.
+
+The "is-open" class uses JavaScript in 'js/docs.js' to add content and functionality.
+
+Markup:
+<div class="dropdown-container">
+  <div class="dropdown item-dropdown">
+    <div class="dropdown__heading">
+      <p>Features</p>
+      <p class="dropdown__toggle dropdown__icon"></p>
+    </div>
+      <ul class="dropdown__drawer">
+        <li>Belt loops</li>
+        <li>Button front</li>
+        <li>Destroyed wash</li>
+        <li>Mid rise</li>
+        <li>Pockets</li>
+        <li>Raw edged hem</li>
+      </ul>
+    </div>
+  <div class="dropdown item-dropdown">
+    <div class="dropdown__heading">
+      <p>Fit / Size</p>
+      <p class="dropdown__toggle dropdown__icon"></p>
+    </div>
+      <ul class="dropdown__drawer">
+        <li>Inseam: 27"</li>
+        <li>Front rise: 11"</li>
+        <li>Leg opening: 19 1/2"</li>
+        <li class="dropdown__drawer__link">Size guide</li>
+      </ul>
+    </div>
+  <div class="dropdown item-dropdown">
+    <div class="dropdown__heading">
+      <p>Fabric</p>
+      <p class="dropdown__toggle"></p>
+    </div>
+  </div>
+  <div class="dropdown item-dropdown">
+    <div class="dropdown__heading">
+      <p>RefScale</p>
+      <p class="dropdown__toggle"></p>
+    </div>
+  </div>
+  <div class="dropdown item-dropdown">
+    <div class="dropdown__heading">
+      <p>Color</p>
+      <p class="dropdown__toggle"></p>
+    </div>
+  </div>
+</div>
+
+Styleguide Dropdown
+*/
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  max-width: 375px;
+}
+
+.dropdown__drawer {
+  display: none;
+  list-style: none;
+  position: relative;
+  left: 0;
+  top: 0;
+  padding-bottom: 1rem;
+  min-width: 100%;
+  background-color: var(--grey);
+}
+
+.dropdown__heading {
+  display: flex;
+  justify-content: space-between;
+  padding:0 2.5em;
+  background-color: var(--light-grey);
+}
+
+.item-dropdown li {
+  font-size: 0.8rem;
+}
+
+.dropdown__toggle {
+  margin: 0.8em 0 0 0;
+}
+
+.dropdown__toggle::before {
+content: "";
+position: absolute;
+}
+
+.dropdown__heading.is-open,
+.item-dropdown.is-open {
+  background-color: var(--grey);
+}
+
+.dropdown.is-open .dropdown__drawer {
+     display: block;
+   }
+
+.dropdown__heading > .dropdown__icon::after {
+  content:'\205D'
+}
+
+.dropdown__heading.is-open > .dropdown__icon::after {
+  content:'\2026';
+}
+
+.dropdown__drawer__link {
+  text-decoration: underline;
+  margin-top: 1em;
+}
+
+/*
+Images
+
+Various image sizes. The hero image can be stacked vertically on larger screens.
+
+Markup:
+<div class="reset">
+  <div class="hero__inner">
+    <img class="hero__img" src="https://placeholdit.co//i/450x600?&bg=777&text=Reformation"/>
+  </div>
+</div>
+
+Styleguide Images
+*/
+
+.hero__img {
+  margin-bottom:4px;
+  padding-right:90px;
+}
+
+/*
+Mobile Images
+
+Hero images resized for a mobile viewport of 375px.
+
+Markup:
+<div class="hero-mobile">
+  <div class="hero-mobile__inner">
+    <img class="hero-mobile__img" src="https://placeholdit.co//i/300x400?&bg=777&text=Reformation"/>
+  </div>
+</div>
+
+Styleguide Images.mobile
+*/
+.hero-mobile {
+  margin: 0;
+  padding: 0;
+}
+.hero-mobile__inner {
+  margin: 2px;
+}
+.hero-mobile__img {
+  max-width: 375px;
+}
+/*
+See More Image
+
+Image and description linking to other items.
+
+Markup:
+<div class="hero-mobile">
+  <div class="hero-mobile__inner hero--see-more">
+    <a href=''>
+      <img class="hero-mobile__img " src="https://placeholdit.co//i/150x200?&bg=777&text=Reformation"/>
+      <p>Adidas Shirt</p>
+      <p>$28</p>
+    </a>
+  </div>
+</div>
+
+Styleguide Images.see more
+*/
+
+.hero--see-more {
+  max-width: 450px;
+}
+.hero--see-more p {
+  margin:0;
+  padding:0;
+}
+
+/*
+See More Images Series
+
+Grouping of image and description linking to other items.
+
+Markup:
+<p>Wait there's more</p>
+<div class="image-container">
+  <div class="hero-mobile">
+    <div class="hero-mobile__inner hero--see-more">
+        <img class="hero-mobile__img " src="https://placeholdit.co//i/150x200?&bg=777&text=Reformation"/>
+        <p>Adidas Shirt</p>
+        <p>$28</p>
+    </div>
+  </div>
+  <div class="hero-mobile">
+    <div class="hero-mobile__inner hero--see-more">
+        <img class="hero-mobile__img " src="https://placeholdit.co//i/150x200?&bg=777&text=Reformation"/>
+        <p>Adidas Shirt</p>
+        <p>$28</p>
+    </div>
+  </div>
+  <div class="hero-mobile">
+    <div class="hero-mobile__inner hero--see-more">
+        <img class="hero-mobile__img " src="https://placeholdit.co//i/150x200?&bg=777&text=Reformation"/>
+        <p>Adidas Shirt</p>
+        <p>$28</p>
+    </div>
+  </div>
+</div>
+
+Styleguide Images.see more series
+*/
+
+.image-container {
+  display: flex;
+}
+
+/*
+Product
+
+Media object of copy and images for each item. Default is product description without an image.
+
+Markup:
+<div class="media">
+  <div class="tile">
+    <p class="tile__title">Step Short $98</p>
+      <ul class="tile__list">
+        <li>Product</li>
+        <li>features</li>
+        <li>Size & fit</li>
+        <li>Fabric</li>
+        <li>RefScale</li>
+      </ul>
+    <p class="tile__description">Raw Jeans but shorter. This is a high rise jean short with a raw edged, step hem.</p>
+  </div>
+</div>
+
+Weight: 1
+
+Styleguide Media.product
+*/
+
+.tile__title {
+  font-size: 1.25em;
+}
+
+.tile__list {
+  list-style: none;
+  margin: 0 0 1.5em 0;
+  padding: 0;
+}
+
+.tile__list > li {
+  display: inline;
+  margin-right: .25em;
+  padding-right: 1em;
+}
+
+.tile__list > li:hover {
+  border-bottom: 1px solid var(--black);
+}
+
+.tile__description {
+  margin: 2.5em 0;
+  padding:0;
+}
+
+/*
+Fabric
+
+Fabric description with image.
+
+Markup:
+<div class="media">
+  <div class="tile">
+    <p class="tile__title">Step Short $98</p>
+      <ul class="tile__list">
+        <li>Product</li>
+        <li>features</li>
+        <li>Size & fit</li>
+        <li class="tile__list--active">Fabric</li>
+        <li>RefScale</li>
+      </ul>
+      <img class="tile__img" src="https://placeholdit.co//i/400x300?&bg=777&text=Reformation"/>
+    <p class="tile__caption">This is a lightweight linen fabric – 100% linen</p>
+  </div>
+</div>
+
+Weight: 2
+
+Styleguide Media.fabric
+*/
+.tile__img {
+  padding: 0;
+}
+
+.tile__caption {
+  margin-top: 0.3em;
+  font-size: 0.8em;
+}
+
+/*
+Navigation
+
+Navigation bar for desktop view.
+
+Markup:
+<nav class="nav-container">
+  <div class="nav-container__inner">
+    <ul class="top-nav">
+      <div class="flex">
+        <li><a href="/new">What's new</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/about">About us</a></li>
+      </div>
+      <div class="flex">
+        <a class="home-link" href="/">Reformation</a>
+      </div>
+      <div class="flex">
+        <li><a href="/signin">&#128589; Sign in</a></li>
+        <li><a href="/search">&#128269; Search</a></li>
+        <li><a href="/bag">&#128176; Bag</a></li>
+      </div>
+    </ul>
+  </div>
+</nav>
+
+Styleguide Navigation
+*/
+.nav-container {
+  background-color: transparent;
+}
+
+.nav-container__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.home-link {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.top-nav {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+
+.top-nav a {
+  padding: 0.3em 0.75em;
+  color: var(--text-color);
+  background: transparent;
+  text-decoration: none;
+}
+
+/*
+Dropdown Navigation
+
+Stacked navigation links for mobile viewports.
+
+Markup:
+<div class="dropdown-container--nav">
+  <div class="dropdown--nav item-dropdown">
+    <div class="dropdown__heading">
+      <p class="dropdown__toggle">&#9776;</p>
+      <p>Reformation</p>
+      <p>&#128176;</p>
+    </div>
+      <ul class="dropdown__drawer dropdown__drawer--nav">
+        <li>What's new</li>
+        <li>Shop</li>
+        <li>About us</li>
+        <li>Sign in</li>
+        <li>Search</li>
+        <li>Bag</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+Styleguide Navigation.dropdown
+*/
+.dropdown-container--nav {
+  flex-direction:row;
+}
+
+.dropdown--nav {
+  display: block;
+}
+
+.dropdown__drawer--nav > li {
+  text-decoration:underline;
+}
+
+.dropdown--nav.is-open .dropdown__drawer {
+  display: block;
+}
