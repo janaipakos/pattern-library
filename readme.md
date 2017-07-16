@@ -33,4 +33,4 @@ static-server
 ```
 
 ## Examples
-!(image1.png)[pattern-library/images/image1.png]
+![image1.png](https://github.com/janaipakos/pattern-library/blob/master/images/image1.png)
