@@ -1,5 +1,4 @@
-#Reformation Pattern Library
-#James Anaipakos
+# Reformation Pattern Library
 
 A library of modules following BEM and using KSS as the style guide.
 
@@ -13,7 +12,7 @@ Each section has three main parts:
 - reference to specfic line number in `styles.css`
 
 
-##Install
+## Install
 
 You shouldn't need to build from scratch. Simply open `docs/index.html`. Otherwise:
 
@@ -23,7 +22,7 @@ npm run build
 ```
 
 
-##Usage
+## Usage
 
 Open `index.html` located in the `docs` folder. It can be opened locally or served with `static-server` or `http-server`.
 Make sure to serve from the `docs folder`.
@@ -32,3 +31,6 @@ Make sure to serve from the `docs folder`.
 cd docs
 static-server
 ```
+
+## Examples
+!(image1.png)[pattern-library/images/image1.png]
